@@ -12,6 +12,19 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
 - [Python 3.10+](https://www.python.org/downloads/) instalado.
 - [pip](https://pip.pypa.io/en/stable/installation/) disponível no ambiente.
 
+## Configuração de ambiente
+
+Crie o arquivo `.env` a partir do exemplo:
+
+```bash
+cp .env.example .env
+```
+
+Depois, preencha as chaves no `.env`:
+
+- `OPENAI_API_KEY`
+- `GOOGLE_API_KEY`
+
 ## Exemplo rápido
 
 ```bash
