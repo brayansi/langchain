@@ -4,7 +4,7 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
 
 ## Conteúdo
 
-- **Introdução (`intro/`)** — Documentação:
+- **`intro/`** — Documentação:
   - [Introdução ao LangChain](intro/intro-langchain.md) — visão geral, histórico, recursos e arquitetura básica.
 
 ## Pré-requisitos
@@ -23,4 +23,4 @@ source .venv/bin/activate
 pip install langchain
 ```
 
-Use a seção de introdução (`intro/`) como ponto de partida para entender os conceitos fundamentais.
+Use a seção `intro/` como ponto de partida para entender os conceitos fundamentais.
