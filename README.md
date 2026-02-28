@@ -8,8 +8,18 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
   - [Introdução ao LangChain](1-introdução/introdução-langchain.md) — visão geral, histórico, recursos e arquitetura básica.
 - **`2-fundamentos/`** — Exemplos e documentação:
   - [Fundamentos](2-fundamentos/fundamentos.md) — inicialização de modelos, PromptTemplate e ChatPromptTemplate na prática.
+  - Exemplos `.py` da seção:
+    - [`1-hello-world.py`](2-fundamentos/1-hello-world.py)
+    - [`2-init-chat-model.py`](2-fundamentos/2-init-chat-model.py)
+    - [`3-prompt-template.py`](2-fundamentos/3-prompt-template.py)
+    - [`4-chat-prompt-template.py`](2-fundamentos/4-chat-prompt-template.py)
 - **`3-chains-e-processamento/`** — Exemplos e documentação:
   - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda` e pipeline em múltiplas etapas com `StrOutputParser`.
+  - Exemplos `.py` da seção:
+    - [`1-init-chains.py`](3-chains-e-processamento/1-init-chains.py)
+    - [`2-chains-com-decorators.py`](3-chains-e-processamento/2-chains-com-decorators.py)
+    - [`3-runneble-lambda.py`](3-chains-e-processamento/3-runneble-lambda.py)
+    - [`4-pipeline-de-processamento.py`](3-chains-e-processamento/4-pipeline-de-processamento.py)
 
 ## Pré-requisitos
 
