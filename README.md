@@ -9,7 +9,7 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
 - **`2-fundamentos/`** — Exemplos e documentação:
   - [Fundamentos](2-fundamentos/fundamentos.md) — inicialização de modelos, PromptTemplate e ChatPromptTemplate na prática.
 - **`3-chains-e-processamento/`** — Exemplos e documentação:
-  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain` e `RunnableLambda` para transformação de dados.
+  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda` e pipeline em múltiplas etapas com `StrOutputParser`.
 
 ## Pré-requisitos
 
