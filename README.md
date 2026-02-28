@@ -8,6 +8,8 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
   - [Introdução ao LangChain](1-introdução/introdução-langchain.md) — visão geral, histórico, recursos e arquitetura básica.
 - **`2-fundamentos/`** — Exemplos e documentação:
   - [Fundamentos](2-fundamentos/fundamentos.md) — inicialização de modelos, PromptTemplate e ChatPromptTemplate na prática.
+- **`3-chains-e-processamento/`** — Exemplos e documentação:
+  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain` e `RunnableLambda` para transformação de dados.
 
 ## Pré-requisitos
 
@@ -61,4 +63,4 @@ Esse comando lista os pacotes instalados no ambiente virtual atual e salva no ar
 pip install -r requirements.txt
 ```
 
-Use a seção `1-introdução/` como ponto de partida conceitual e `2-fundamentos/` para praticar os primeiros blocos de construção no código.
+Use a seção `1-introdução/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção e `3-chains-e-processamento/` para evoluir para composição de etapas com LCEL.
