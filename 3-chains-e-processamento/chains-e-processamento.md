@@ -11,7 +11,7 @@ Arquivos cobertos nesta seção:
 - `4-pipeline-de-processamento.py`
 - `5-sumarizacao.py`
 - `6-sumarizacao-com-map-reduce.py`
-- `7-sumarizacao-com-map-reduce.py`
+- `7-pipeline-de-sumarizacao.py`
 
 ## 1) Encadeamento básico com `PromptTemplate | model`
 
@@ -154,7 +154,7 @@ Quando usar:
 
 ## 7) Sumarização com map-reduce em LCEL
 
-Arquivo: `3-chains-e-processamento/7-sumarizacao-com-map-reduce.py`
+Arquivo: `3-chains-e-processamento/7-pipeline-de-sumarizacao.py`
 
 Esse exemplo implementa map-reduce no padrão moderno:
 
@@ -197,7 +197,7 @@ python 3-chains-e-processamento/3-runneble-lambda.py
 python 3-chains-e-processamento/4-pipeline-de-processamento.py
 python 3-chains-e-processamento/5-sumarizacao.py
 python 3-chains-e-processamento/6-sumarizacao-com-map-reduce.py
-python 3-chains-e-processamento/7-sumarizacao-com-map-reduce.py
+python 3-chains-e-processamento/7-pipeline-de-sumarizacao.py
 ```
 
 ## Erros comuns e diagnóstico rápido
@@ -206,7 +206,7 @@ python 3-chains-e-processamento/7-sumarizacao-com-map-reduce.py
 - **Erro de autenticação**: valide chaves no `.env` e permissão do provedor.
 - **Tipo inesperado**: revise o retorno de funções `@chain` e `RunnableLambda`.
 - **ImportError**: instale dependências com `pip install -r requirements.txt`.
-- **Erro com `stuff`/`load_summarize_chain`**: valide o formato de entrada (`input_documents`) e compare com a abordagem LCEL do `7-sumarizacao-com-map-reduce.py`.
+- **Erro com `stuff`/`load_summarize_chain`**: valide o formato de entrada (`input_documents`) e compare com a abordagem LCEL do `7-pipeline-de-sumarizacao.py`.
 
 ## Próximos passos sugeridos
 

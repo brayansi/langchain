@@ -22,7 +22,7 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`4-pipeline-de-processamento.py`](3-chains-e-processamento/4-pipeline-de-processamento.py)
     - [`5-sumarizacao.py`](3-chains-e-processamento/5-sumarizacao.py)
     - [`6-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/6-sumarizacao-com-map-reduce.py)
-    - [`7-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/7-sumarizacao-com-map-reduce.py)
+    - [`7-pipeline-de-sumarizacao.py`](3-chains-e-processamento/7-pipeline-de-sumarizacao.py)
 
 ## Pré-requisitos
 
