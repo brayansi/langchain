@@ -1,59 +1,59 @@
 # Introdução ao LangChain e seu ecossistema
 
-O LangChain e um framework open source para construir aplicacoes com LLMs de forma modular. Em vez de usar apenas chamadas isoladas de modelo, ele oferece uma arquitetura para combinar modelos, ferramentas, recuperacao de contexto (RAG), memoria, streaming e observabilidade.
+O LangChain é um framework open source para construir aplicações com LLMs de forma modular. Em vez de usar apenas chamadas isoladas de modelo, ele oferece uma arquitetura para combinar modelos, ferramentas, recuperação de contexto (RAG), memória, streaming e observabilidade.
 
-Na pratica, voce consegue sair de um prototipo simples para um sistema de producao mantendo a mesma linha de desenvolvimento.
+Na prática, você consegue sair de um protótipo simples para um sistema de produção mantendo a mesma linha de desenvolvimento.
 
-## Visao geral do ecossistema (ponta a ponta)
+## Visão geral do ecossistema (ponta a ponta)
 
 Hoje, o ecossistema pode ser entendido assim:
 
-- **LangChain**: camada de alto nivel para criar agentes e apps rapidamente.
-- **LangGraph**: camada de orquestracao mais baixa para fluxos stateful, long-running e com controle fino.
-- **LangSmith**: plataforma para observabilidade, avaliacao, testes e operacao em producao.
-- **LangSmith Deployment (Agent Server)**: runtime de deploy para agentes com execucao duravel, streaming e escala.
-- **LangSmith Studio**: IDE visual para depuracao, inspeção de estado, testes e iteracao.
-- **LangServe**: biblioteca para expor runnables/chains via API REST; segue util em casos especificos, mas o proprio time recomenda LangGraph Platform para novos projetos.
+- **LangChain**: camada de alto nível para criar agentes e apps rapidamente.
+- **LangGraph**: camada de orquestração mais baixa para fluxos stateful, long-running e com controle fino.
+- **LangSmith**: plataforma para observabilidade, avaliação, testes e operação em produção.
+- **LangSmith Deployment (Agent Server)**: runtime de deploy para agentes com execução durável, streaming e escala.
+- **LangSmith Studio**: IDE visual para depuração, inspeção de estado, testes e iteração.
+- **LangServe**: biblioteca para expor runnables/chains via API REST; segue útil em casos específicos, mas o próprio time recomenda LangGraph Platform para novos projetos.
 
 ## Como escolher cada camada
 
 Uma regra simples:
 
-- Comece por **LangChain** quando quiser produtividade e padroes prontos.
-- Use **LangGraph** quando precisar de controle de fluxo complexo (loops, interrupcoes, persistencia, HITL).
-- Use **LangSmith** desde cedo para rastrear execucao, medir qualidade e reduzir risco em producao.
+- Comece por **LangChain** quando quiser produtividade e padrões prontos.
+- Use **LangGraph** quando precisar de controle de fluxo complexo (loops, interrupções, persistência, HITL).
+- Use **LangSmith** desde cedo para rastrear execução, medir qualidade e reduzir risco em produção.
 
-Importante: os agentes do LangChain sao construidos sobre LangGraph, entao voce nao "perde" capacidade ao iniciar no alto nivel.
+Importante: os agentes do LangChain são construídos sobre LangGraph, então você não "perde" capacidade ao iniciar no alto nível.
 
-## Principais conceitos tecnicos no LangChain atual
+## Principais conceitos técnicos no LangChain atual
 
-- **Agents (`create_agent`)**: forma recomendada para construir agentes em producao.
+- **Agents (`create_agent`)**: forma recomendada para construir agentes em produção.
 - **Models**: interface padronizada para trocar provedores com menos lock-in.
-- **Tools**: funcoes e integracoes que o agente chama durante o raciocinio.
-- **Retrieval e RAG**: recuperacao de conhecimento externo para respostas ancoradas em dados.
-- **Middleware**: ponto de extensao para guardrails, roteamento, politicas e observabilidade.
-- **State e Memory**: historico da conversa e estado adicional para comportamento contextual.
-- **Structured output**: saida tipada/estruturada com estrategias de provider ou tool.
+- **Tools**: funções e integrações que o agente chama durante o raciocínio.
+- **Retrieval e RAG**: recuperação de conhecimento externo para respostas ancoradas em dados.
+- **Middleware**: ponto de extensão para guardrails, roteamento, políticas e observabilidade.
+- **State e Memory**: histórico da conversa e estado adicional para comportamento contextual.
+- **Structured output**: saída tipada/estruturada com estratégias de provider ou tool.
 - **Streaming**: resposta incremental para melhor UX e monitoramento em tempo real.
 
-## Mudancas importantes na geracao mais recente (v1+)
+## Mudanças importantes na geração mais recente (v1+)
 
 Para estudar sem pegar material antigo, tenha estes pontos em mente:
 
 - O pacote `langchain` ficou mais enxuto e focado em blocos centrais.
 - Recursos legados (ex.: `LLMChain`, `ConversationChain`) foram movidos para `langchain-classic`.
-- A recomendacao atual para agentes e `langchain.agents.create_agent`.
-- O ecossistema atual reforca middleware, estado e estrategias de runtime para producao.
+- A recomendação atual para agentes é `langchain.agents.create_agent`.
+- O ecossistema atual reforça middleware, estado e estratégias de runtime para produção.
 
 ## Fluxo ponta a ponta de um projeto
 
-Um caminho tipico de ponta a ponta no ecossistema:
+Um caminho típico de ponta a ponta no ecossistema:
 
-1. **Descoberta do caso de uso**: definir tarefa, metricas de sucesso e riscos.
-2. **Prototipo local**: montar agente/app com LangChain e ferramentas basicas.
+1. **Descoberta do caso de uso**: definir tarefa, métricas de sucesso e riscos.
+2. **Protótipo local**: montar agente/app com LangChain e ferramentas básicas.
 3. **Contexto externo**: adicionar retrieval (RAG), banco vetorial e fontes de dados.
-4. **Confiabilidade**: inserir middleware, validacoes e controles de erro.
-5. **Observabilidade**: instrumentar com LangSmith para tracing e avaliacao.
-6. **Iteracao de qualidade**: ajustar prompt, tools, retrieval e criterios de avaliacao.
-7. **Deploy**: publicar em Agent Server/Deployment com escala e execucao duravel.
-8. **Operacao continua**: monitorar custo, latencia, qualidade e regressao.
+4. **Confiabilidade**: inserir middleware, validações e controles de erro.
+5. **Observabilidade**: instrumentar com LangSmith para tracing e avaliação.
+6. **Iteração de qualidade**: ajustar prompt, tools, retrieval e critérios de avaliação.
+7. **Deploy**: publicar em Agent Server/Deployment com escala e execução durável.
+8. **Operação contínua**: monitorar custo, latência, qualidade e regressão.
