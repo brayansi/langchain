@@ -24,9 +24,10 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`6-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/6-sumarizacao-com-map-reduce.py)
     - [`7-pipeline-de-sumarizacao.py`](3-chains-e-processamento/7-pipeline-de-sumarizacao.py)
 - **`4-agentes-e-tools/`** — Exemplos e documentação:
-  - [Agentes e Tools](4-agentes-e-tools/agentes-e-tools.md) — criação de agente no padrão ReAct, definição de tools com `@tool` e execução controlada com `AgentExecutor`.
+  - [Agentes e Tools](4-agentes-e-tools/agentes-e-tools.md) — criação de agente no padrão ReAct, definição de tools com `@tool`, uso de prompt customizado e integração com LangChain Hub.
   - Exemplos `.py` da seção:
     - [`1-agente-react-e-tools.py`](4-agentes-e-tools/1-agente-react-e-tools.py)
+    - [`2-agente-react-usando-prompt-hub.py`](4-agentes-e-tools/2-agente-react-usando-prompt-hub.py)
 
 ## Pré-requisitos
 

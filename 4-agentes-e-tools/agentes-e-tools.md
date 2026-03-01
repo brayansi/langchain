@@ -6,6 +6,7 @@ O objetivo é mostrar como um agente ReAct decide quando chamar tools e como com
 Arquivos cobertos nesta seção:
 
 - `1-agente-react-e-tools.py`
+- `2-agente-react-usando-prompt-hub.py`
 
 ## 1) Agente ReAct com tools customizadas
 
@@ -33,6 +34,46 @@ Quando usar:
 - Para separar capacidades do agente em tools pequenas e reutilizáveis.
 - Em fluxos que exigem rastreabilidade das ações (`verbose=True`).
 
+## 2) Agente ReAct usando prompt do LangChain Hub
+
+Arquivo: `4-agentes-e-tools/2-agente-react-usando-prompt-hub.py`
+
+Esse exemplo usa um prompt pronto do Hub para simplificar a configuração:
+
+1. Define tools com `@tool` (`calculator` e `web_search_mock`).
+2. Inicializa o modelo com `ChatOpenAI`.
+3. Carrega um prompt ReAct público com `hub.pull("hwchase17/react")`.
+4. Cria o agente com `create_react_agent(llm, tools, prompt)`.
+5. Executa com `AgentExecutor` e uma pergunta de exemplo.
+
+Conceitos-chave:
+
+- **Prompt desacoplado do código**: o template do agente vem do Hub em vez de ficar hardcoded no arquivo.
+- **Reuso de prompts comunitários**: acelera testes com padrões já consolidados.
+- **Troca rápida de comportamento**: mudar o prompt do agente pode exigir só alterar o identificador do Hub.
+
+Quando usar:
+
+- Quando você quer começar rápido com um prompt ReAct pronto.
+- Para comparar desempenho entre prompt customizado e prompt do Hub.
+- Em estudos e protótipos de agentes com menor boilerplate.
+
+## O que é o LangChain Hub?
+
+O **LangChain Hub** é um repositório de artefatos compartilháveis (principalmente prompts) que podem ser carregados no código com `hub.pull(...)`.
+
+Na prática, ele permite:
+
+- **Centralizar prompts reutilizáveis** em vez de duplicar templates em múltiplos arquivos.
+- **Versionar e compartilhar** prompts entre pessoas e projetos.
+- **Experimentar rapidamente** estratégias de prompting sem reescrever todo o agente.
+
+Cuidados importantes:
+
+- Prompts do Hub podem mudar ao longo do tempo, então valide comportamento em ambiente de estudo/produção.
+- Sempre revise as instruções do prompt puxado para garantir aderência ao seu caso.
+- Em produção, pode fazer sentido fixar uma versão/artefato específico para maior previsibilidade.
+
 ## Como executar o exemplo
 
 No diretório raiz do projeto:
@@ -48,8 +89,9 @@ pip install -r requirements.txt
 cp .env.example .env
 # preencher OPENAI_API_KEY e/ou GOOGLE_API_KEY
 
-# 4) executar exemplo
+# 4) executar exemplos
 python 4-agentes-e-tools/1-agente-react-e-tools.py
+python 4-agentes-e-tools/2-agente-react-usando-prompt-hub.py
 ```
 
 ## Erros comuns e diagnóstico rápido
@@ -59,6 +101,7 @@ python 4-agentes-e-tools/1-agente-react-e-tools.py
 - **Loop ou resposta incompleta**: ajuste `max_iterations` no `AgentExecutor`.
 - **Parsing error no ReAct**: revise o formato do prompt (`Action`, `Action Input`, `Final Answer`).
 - **Risco com `eval` na tool de cálculo**: evite entrada não confiável ou substitua por parser matemático seguro.
+- **Falha ao carregar do Hub**: confirme conectividade e se o identificador (ex.: `hwchase17/react`) está correto.
 
 ## Próximos passos sugeridos
 
