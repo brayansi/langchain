@@ -23,6 +23,10 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`5-sumarizacao.py`](3-chains-e-processamento/5-sumarizacao.py)
     - [`6-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/6-sumarizacao-com-map-reduce.py)
     - [`7-pipeline-de-sumarizacao.py`](3-chains-e-processamento/7-pipeline-de-sumarizacao.py)
+- **`4-agentes-e-tools/`** — Exemplos e documentação:
+  - [Agentes e Tools](4-agentes-e-tools/agentes-e-tools.md) — criação de agente no padrão ReAct, definição de tools com `@tool` e execução controlada com `AgentExecutor`.
+  - Exemplos `.py` da seção:
+    - [`1-agente-react-e-tools.py`](4-agentes-e-tools/1-agente-react-e-tools.py)
 
 ## Pré-requisitos
 
@@ -77,4 +81,4 @@ Esse comando lista os pacotes instalados no ambiente virtual atual e salva no ar
 pip install -r requirements.txt
 ```
 
-Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção e `3-chains-e-processamento/` para evoluir para composição de etapas com LCEL.
+Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção, `3-chains-e-processamento/` para evoluir na composição de etapas com LCEL e `4-agentes-e-tools/` para orquestrar ferramentas com agentes.
