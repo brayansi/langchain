@@ -4,8 +4,8 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
 
 ## Conteúdo
 
-- **`1-introdução/`** — Documentação:
-  - [Introdução ao LangChain](1-introdução/introdução-langchain.md) — visão geral, histórico, recursos e arquitetura básica.
+- **`1-introducao/`** — Documentação:
+  - [Introdução ao LangChain](1-introducao/introducao-langchain.md) — visão geral, histórico, recursos e arquitetura básica.
 - **`2-fundamentos/`** — Exemplos e documentação:
   - [Fundamentos](2-fundamentos/fundamentos.md) — inicialização de modelos, PromptTemplate e ChatPromptTemplate na prática.
   - Exemplos `.py` da seção:
@@ -75,4 +75,4 @@ Esse comando lista os pacotes instalados no ambiente virtual atual e salva no ar
 pip install -r requirements.txt
 ```
 
-Use a seção `1-introdução/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção e `3-chains-e-processamento/` para evoluir para composição de etapas com LCEL.
+Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção e `3-chains-e-processamento/` para evoluir para composição de etapas com LCEL.
