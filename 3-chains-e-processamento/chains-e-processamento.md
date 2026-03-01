@@ -9,6 +9,7 @@ Arquivos cobertos nesta seção:
 - `2-chains-com-decorators.py`
 - `3-runneble-lambda.py`
 - `4-pipeline-de-processamento.py`
+- `5-sumarizacao.py`
 
 ## 1) Encadeamento básico com `PromptTemplate | model`
 
@@ -103,6 +104,29 @@ Quando usar:
 - Para reaproveitar subchains em fluxos maiores.
 - Em pipelines onde cada etapa exige um formato de entrada diferente.
 
+## 5) Sumarização com LCEL + text splitting
+
+Arquivo: `3-chains-e-processamento/5-sumarizacao.py`
+
+Esse exemplo mostra sumarização no padrão atual do LangChain v1:
+
+1. Divide um texto longo em partes com `RecursiveCharacterTextSplitter`.
+2. Junta os chunks em um único texto de trabalho.
+3. Usa `PromptTemplate` para instruir o formato do resumo.
+4. Encadeia `prompt | llm | StrOutputParser()` para retornar `str`.
+
+Conceitos-chave:
+
+- **Segmentação de contexto**: ajuda a controlar tamanho de entrada em textos maiores.
+- **LCEL para sumarização**: substitui abordagem legada com `load_summarize_chain`.
+- **Saída textual padronizada**: `StrOutputParser` evita depender de objetos de mensagem.
+
+Quando usar:
+
+- Para resumir textos curtos/médios com uma chamada ao modelo.
+- Como base para evoluir para estratégia map-reduce manual em textos grandes.
+- Em projetos com `langchain` v1, sem depender de APIs legadas.
+
 ## Como executar os exemplos
 
 No diretório raiz do projeto:
@@ -123,6 +147,7 @@ python 3-chains-e-processamento/1-init-chains.py
 python 3-chains-e-processamento/2-chains-com-decorators.py
 python 3-chains-e-processamento/3-runneble-lambda.py
 python 3-chains-e-processamento/4-pipeline-de-processamento.py
+python 3-chains-e-processamento/5-sumarizacao.py
 ```
 
 ## Erros comuns e diagnóstico rápido
@@ -131,6 +156,7 @@ python 3-chains-e-processamento/4-pipeline-de-processamento.py
 - **Erro de autenticação**: valide chaves no `.env` e permissão do provedor.
 - **Tipo inesperado**: revise o retorno de funções `@chain` e `RunnableLambda`.
 - **ImportError**: instale dependências com `pip install -r requirements.txt`.
+- **Erro com `stuff`/`load_summarize_chain`**: em `langchain` v1 prefira sumarização com LCEL (`PromptTemplate | model | StrOutputParser`).
 
 ## Próximos passos sugeridos
 

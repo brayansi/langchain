@@ -14,12 +14,13 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`3-prompt-template.py`](2-fundamentos/3-prompt-template.py)
     - [`4-chat-prompt-template.py`](2-fundamentos/4-chat-prompt-template.py)
 - **`3-chains-e-processamento/`** — Exemplos e documentação:
-  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda` e pipeline em múltiplas etapas com `StrOutputParser`.
+  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda`, pipeline em múltiplas etapas e sumarização com `PromptTemplate`.
   - Exemplos `.py` da seção:
     - [`1-init-chains.py`](3-chains-e-processamento/1-init-chains.py)
     - [`2-chains-com-decorators.py`](3-chains-e-processamento/2-chains-com-decorators.py)
     - [`3-runneble-lambda.py`](3-chains-e-processamento/3-runneble-lambda.py)
     - [`4-pipeline-de-processamento.py`](3-chains-e-processamento/4-pipeline-de-processamento.py)
+    - [`5-sumarizacao.py`](3-chains-e-processamento/5-sumarizacao.py)
 
 ## Pré-requisitos
 
@@ -47,7 +48,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Instalar pacotes principais para estudos com LLMs
-pip install langchain langchain-openai langchain-google-genai python-dotenv beautifulsoup4 pypdf
+pip install langchain langchain-openai langchain-google-genai langchain-text-splitters python-dotenv beautifulsoup4 pypdf
 ```
 
 ### O que é cada pacote?
@@ -55,6 +56,7 @@ pip install langchain langchain-openai langchain-google-genai python-dotenv beau
 - **`langchain`**: biblioteca base para construir cadeias, agentes e fluxos com LLMs.
 - **`langchain-openai`**: integrações do LangChain com modelos e APIs da OpenAI.
 - **`langchain-google-genai`**: integrações do LangChain com modelos Gemini (Google GenAI).
+- **`langchain-text-splitters`**: utilitários de segmentação de texto para pipelines de processamento e sumarização.
 - **`python-dotenv`**: carrega variáveis de ambiente de um arquivo `.env` (ex.: chaves de API).
 - **`beautifulsoup4`**: parser de HTML/XML para extração e limpeza de conteúdo web.
 - **`pypdf`**: leitura e extração de texto de arquivos PDF.
