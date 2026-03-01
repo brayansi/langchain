@@ -40,8 +40,8 @@ a endless song of ambition, struggle, and hope.
 splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=70)
 parts = splitter.create_documents([long_text])
 llm = ChatOpenAI(model="gpt-5-nano", temperature=0)
-chain_sumarize = load_summarize_chain(llm, chain_type="stuff", verbose=False)
+chain_sumarize = load_summarize_chain(llm, chain_type="map_reduce", verbose=True)
 
 result = chain_sumarize.invoke({"input_documents": parts})
 
-print(result["output_text"])
+print(result)

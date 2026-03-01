@@ -14,13 +14,15 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`3-prompt-template.py`](2-fundamentos/3-prompt-template.py)
     - [`4-chat-prompt-template.py`](2-fundamentos/4-chat-prompt-template.py)
 - **`3-chains-e-processamento/`** — Exemplos e documentação:
-  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda`, pipeline em múltiplas etapas e sumarização com `PromptTemplate`.
+  - [Chains e Processamento](3-chains-e-processamento/chains-e-processamento.md) — composição com LCEL, uso de `@chain`, `RunnableLambda`, pipelines em múltiplas etapas e exemplos de sumarização com `stuff`, `map_reduce` e LCEL.
   - Exemplos `.py` da seção:
     - [`1-init-chains.py`](3-chains-e-processamento/1-init-chains.py)
     - [`2-chains-com-decorators.py`](3-chains-e-processamento/2-chains-com-decorators.py)
     - [`3-runneble-lambda.py`](3-chains-e-processamento/3-runneble-lambda.py)
     - [`4-pipeline-de-processamento.py`](3-chains-e-processamento/4-pipeline-de-processamento.py)
     - [`5-sumarizacao.py`](3-chains-e-processamento/5-sumarizacao.py)
+    - [`6-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/6-sumarizacao-com-map-reduce.py)
+    - [`7-sumarizacao-com-map-reduce.py`](3-chains-e-processamento/7-sumarizacao-com-map-reduce.py)
 
 ## Pré-requisitos
 

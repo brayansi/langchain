@@ -10,6 +10,8 @@ Arquivos cobertos nesta seção:
 - `3-runneble-lambda.py`
 - `4-pipeline-de-processamento.py`
 - `5-sumarizacao.py`
+- `6-sumarizacao-com-map-reduce.py`
+- `7-sumarizacao-com-map-reduce.py`
 
 ## 1) Encadeamento básico com `PromptTemplate | model`
 
@@ -104,28 +106,74 @@ Quando usar:
 - Para reaproveitar subchains em fluxos maiores.
 - Em pipelines onde cada etapa exige um formato de entrada diferente.
 
-## 5) Sumarização com LCEL + text splitting
+## 5) Sumarização com `stuff` via `load_summarize_chain`
 
 Arquivo: `3-chains-e-processamento/5-sumarizacao.py`
 
-Esse exemplo mostra sumarização no padrão atual do LangChain v1:
+Esse exemplo usa uma API utilitária pronta de sumarização:
 
 1. Divide um texto longo em partes com `RecursiveCharacterTextSplitter`.
-2. Junta os chunks em um único texto de trabalho.
-3. Usa `PromptTemplate` para instruir o formato do resumo.
-4. Encadeia `prompt | llm | StrOutputParser()` para retornar `str`.
+2. Inicializa um `ChatOpenAI`.
+3. Cria a chain com `load_summarize_chain(..., chain_type="stuff")`.
+4. Invoca com `{"input_documents": parts}` e imprime o resumo.
 
 Conceitos-chave:
 
-- **Segmentação de contexto**: ajuda a controlar tamanho de entrada em textos maiores.
-- **LCEL para sumarização**: substitui abordagem legada com `load_summarize_chain`.
-- **Saída textual padronizada**: `StrOutputParser` evita depender de objetos de mensagem.
+- **`stuff`**: concatena os documentos e gera um único resumo final.
+- **API utilitária de chains**: reduz boilerplate para resumos diretos.
+- **Segmentação de contexto**: mantém o input organizado para a etapa de resumo.
 
 Quando usar:
 
-- Para resumir textos curtos/médios com uma chamada ao modelo.
-- Como base para evoluir para estratégia map-reduce manual em textos grandes.
-- Em projetos com `langchain` v1, sem depender de APIs legadas.
+- Para estudar exemplos existentes com `load_summarize_chain`.
+- Quando você quer um fluxo simples com pouca configuração.
+- Como referência antes de customizar o pipeline com LCEL.
+
+## 6) Sumarização com `map_reduce` via `load_summarize_chain`
+
+Arquivo: `3-chains-e-processamento/6-sumarizacao-com-map-reduce.py`
+
+Esse exemplo usa uma API utilitária para `map_reduce`:
+
+1. Segmenta o texto em documentos com `RecursiveCharacterTextSplitter`.
+2. Inicializa um `ChatOpenAI`.
+3. Cria a chain com `load_summarize_chain(..., chain_type="map_reduce")`.
+4. Executa com `{"input_documents": parts}` para combinar resumo por etapas.
+
+Conceitos-chave:
+
+- **`map_reduce`**: resume partes separadas e depois consolida em um resumo final.
+- **Escalabilidade de contexto**: funciona melhor que `stuff` em textos maiores.
+- **Implementação pronta**: acelera a construção de resumo em múltiplas etapas.
+
+Quando usar:
+
+- Para comparar `stuff` vs `map_reduce` em exemplos didáticos.
+- Para textos maiores onde uma única concatenação pode degradar o resultado.
+- Quando você quer escalar a sumarização sem montar o pipeline manualmente.
+
+## 7) Sumarização com map-reduce em LCEL
+
+Arquivo: `3-chains-e-processamento/7-sumarizacao-com-map-reduce.py`
+
+Esse exemplo implementa map-reduce no padrão moderno:
+
+1. Cria um estágio `map` com `PromptTemplate | llm | StrOutputParser`.
+2. Executa o `map` em cada chunk com `map_chain.map()`.
+3. Prepara os resumos parciais com `RunnableLambda`.
+4. Aplica um estágio `reduce` para consolidar o resumo final.
+
+Conceitos-chave:
+
+- **LCEL composável**: cada etapa fica explícita e fácil de evoluir.
+- **`RunnableLambda`**: organiza os dados entre map e reduce.
+- **Pipeline declarativo**: expõe cada etapa para customização completa.
+
+Quando usar:
+
+- Em projetos novos no ecossistema LangChain.
+- Quando você quer controle detalhado das etapas de sumarização.
+- Para adaptar prompts diferentes no map e no reduce.
 
 ## Como executar os exemplos
 
@@ -148,6 +196,8 @@ python 3-chains-e-processamento/2-chains-com-decorators.py
 python 3-chains-e-processamento/3-runneble-lambda.py
 python 3-chains-e-processamento/4-pipeline-de-processamento.py
 python 3-chains-e-processamento/5-sumarizacao.py
+python 3-chains-e-processamento/6-sumarizacao-com-map-reduce.py
+python 3-chains-e-processamento/7-sumarizacao-com-map-reduce.py
 ```
 
 ## Erros comuns e diagnóstico rápido
@@ -156,7 +206,7 @@ python 3-chains-e-processamento/5-sumarizacao.py
 - **Erro de autenticação**: valide chaves no `.env` e permissão do provedor.
 - **Tipo inesperado**: revise o retorno de funções `@chain` e `RunnableLambda`.
 - **ImportError**: instale dependências com `pip install -r requirements.txt`.
-- **Erro com `stuff`/`load_summarize_chain`**: em `langchain` v1 prefira sumarização com LCEL (`PromptTemplate | model | StrOutputParser`).
+- **Erro com `stuff`/`load_summarize_chain`**: valide o formato de entrada (`input_documents`) e compare com a abordagem LCEL do `7-sumarizacao-com-map-reduce.py`.
 
 ## Próximos passos sugeridos
 
