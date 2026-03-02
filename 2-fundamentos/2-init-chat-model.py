@@ -5,6 +5,6 @@ load_dotenv()
 
 model = init_chat_model(model="gemini-2.5-flash", model_provider="google_genai")
 
-message = model.invoke("Hello, world!")
+message = model.invoke("Olá, mundo!")
 
 print(message.content)

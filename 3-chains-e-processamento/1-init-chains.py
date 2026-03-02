@@ -6,13 +6,13 @@ load_dotenv()
 
 template = PromptTemplate(
     input_variables=["topic"],
-    template="Tell me a joke abount {topic}"
+    template="Conte uma piada sobre {topic}"
 )
 
 model = ChatOpenAI(model="gpt-5-mini", temperature=0.5)
 
 chain = template | model
 
-response = chain.invoke({"topic": "BTC and ETH"})
+response = chain.invoke({"topic": "BTC e ETH"})
 
 print(response.content)

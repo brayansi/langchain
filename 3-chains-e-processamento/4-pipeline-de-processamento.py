@@ -7,12 +7,12 @@ load_dotenv()
 
 template_to_translate = PromptTemplate(
     input_variables=["initial_text"],
-    template="Translate the following text to English: \n {initial_text}"
+    template="Traduza o texto a seguir para inglês: \n {initial_text}"
 )
 
 template_to_summarize = PromptTemplate(
     input_variables=["text"],
-    template="Summarize it in just two names of foods: {text}"
+    template="Resuma em apenas dois nomes de comidas: {text}"
 )
 
 llm_english = ChatOpenAI(model="gpt-5-mini", temperature=0)

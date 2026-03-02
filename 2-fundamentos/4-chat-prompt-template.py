@@ -6,11 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 chat_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a an assistant that translate text in {language} language."),
+    ("system", "Você é um assistente que traduz textos para o idioma {language}."),
     ("user", "{question}")
 ])
 
-message = chat_prompt.format_messages(language="Portuguese", question="Hello, world!")
+message = chat_prompt.format_messages(language="Português", question="Olá, mundo!")
 
 for msg in message:
     print(f"{msg.type}: {msg.content}")

@@ -7,4 +7,4 @@ parse_number_lambda = RunnableLambda(parse_number)
 
 number = parse_number_lambda.invoke("10")
 
-print(f"Number: {number}", type(number))
+print(f"Número: {number}", type(number))

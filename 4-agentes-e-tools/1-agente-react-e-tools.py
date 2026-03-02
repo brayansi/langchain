@@ -8,16 +8,16 @@ load_dotenv()
 
 @tool("calculator", return_direct=True)
 def calculator(expression: str) -> str:
-    """Calculate a simple mathematical expression and return the result."""
+    """Calcula uma expressão matemática simples e retorna o resultado."""
     try:
         result = eval(expression)
     except Exception as e:
-        return f"Error: {e}"
+        return f"Erro: {e}"
     return result
 
 @tool("web_search_mock")
 def web_search_mock(query: str) -> str:
-    """Mock web search function. Returns a hardcoded result."""
+    """Função mock de busca na web. Retorna um resultado fixo."""
 
     data = {
         "Brasil": "Brasilia",
@@ -34,8 +34,8 @@ def web_search_mock(query: str) -> str:
 
     for country, capital in data.items():
         if country.lower() in query.lower():
-            return f"The capital of {country} is {capital}"
-    return "I don't know the capital of that country"
+            return f"A capital de {country} é {capital}"
+    return "Não sei a capital desse país"
 
 
 llm = ChatOpenAI(model="gpt-5-mini", disable_streaming=True)
@@ -43,30 +43,30 @@ tools = [calculator, web_search_mock]
 
 prompt = PromptTemplate.from_template(
 """
-Answer the following questions as best you can. You have access to the following tools.
-Only use the information you get from the tools, even if you know the answer.
-If the information is not provided by the tools, say you don't know.
+Responda às perguntas a seguir da melhor forma possível. Você tem acesso às seguintes ferramentas.
+Use apenas as informações obtidas pelas ferramentas, mesmo que você já saiba a resposta.
+Se a informação não for fornecida pelas ferramentas, diga que não sabe.
 
 {tools}
 
-Use the following format:
+Use o seguinte formato:
 
-Question: the input question you must answer
-Thought: you should always think about what to do
-Action: the action to take, should be one of [{tool_names}]
-Action Input: the input to the action
-Observation: the result of the action
+Question: a pergunta de entrada que você deve responder
+Thought: você deve sempre pensar no que fazer
+Action: a ação a tomar, deve ser uma entre [{tool_names}]
+Action Input: a entrada para a ação
+Observation: o resultado da ação
 
-... (this Thought/Action/Action Input/Observation can repeat N times)
-Thought: I now know the final answer
-Final Answer: the final answer to the original input question
+... (esse bloco Thought/Action/Action Input/Observation pode se repetir N vezes)
+Thought: agora eu sei a resposta final
+Final Answer: a resposta final para a pergunta original
 
-Rules:
-- If you choose an Action, do NOT include Final Answer in the same step.
-- After Action and Action Input, stop and wait for Observation.
-- Never search the internet. Only use the tools provided.
+Regras:
+- Se você escolher uma Action, NÃO inclua Final Answer no mesmo passo.
+- Após Action e Action Input, pare e aguarde a Observation.
+- Nunca pesquise na internet. Use apenas as ferramentas fornecidas.
 
-Begin!
+Comece!
 
 Question: {input}
 Thought:{agent_scratchpad}"""
@@ -77,18 +77,18 @@ agent_chain = create_react_agent(llm, tools, prompt, stop_sequence=False)
 agent_executor = AgentExecutor.from_agent_and_tools(
     agent_chain, tools,
     verbose=True,
-    handle_parsing_errors="Invalid Format. Either provide an Action on Action Input or Final Answer.",
+    handle_parsing_errors="Formato inválido. Forneça Action com Action Input ou Final Answer.",
     max_iterations=3
 )
 
-result = agent_executor.invoke({"input": "What is 10 + 10?"})
+result = agent_executor.invoke({"input": "Quanto é 10 + 10?"})
 print(result)
 
-# result = agent_executor.invoke({"input": "What is 1024 / 2?"})
+# result = agent_executor.invoke({"input": "Quanto é 1024 / 2?"})
 # print(result)
 
-# result = agent_executor.invoke({"input": "What is the capital of Brasil?"})
+# result = agent_executor.invoke({"input": "Qual é a capital do Brasil?"})
 # print(result)
 
-# result = agent_executor.invoke({"input": "What is the capital of Japan?"})
+# result = agent_executor.invoke({"input": "Qual é a capital do Japão?"})
 # print(result)

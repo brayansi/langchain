@@ -12,7 +12,7 @@ def squere(imput_x:dict) -> dict:
 
 template = PromptTemplate(
     input_variables=["squere_result"],
-    template="Tell me about the number {squere_result}"
+    template="Fale sobre o número {squere_result}"
 )
 
 model = ChatOpenAI(model="gpt-5-mini", temperature=0.5)
