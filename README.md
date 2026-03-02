@@ -28,6 +28,10 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
   - Exemplos `.py` da seção:
     - [`1-agente-react-e-tools.py`](4-agentes-e-tools/1-agente-react-e-tools.py)
     - [`2-agente-react-usando-prompt-hub.py`](4-agentes-e-tools/2-agente-react-usando-prompt-hub.py)
+- **`5-gerenciamento-e-momeorias/`** — Exemplos e documentação:
+  - [Gerenciamento e Memorias](5-gerenciamento-e-momeorias/gerenciamento-e-momeorias.md) — uso de `RunnableWithMessageHistory`, `MessagesPlaceholder` e `InMemoryChatMessageHistory` para manter contexto por `session_id`.
+  - Exemplos `.py` da seção:
+    - [`1-armazenamoento-de-historico.py`](5-gerenciamento-e-momeorias/1-armazenamoento-de-historico.py)
 
 ## Pré-requisitos
 
@@ -82,4 +86,4 @@ Esse comando lista os pacotes instalados no ambiente virtual atual e salva no ar
 pip install -r requirements.txt
 ```
 
-Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção, `3-chains-e-processamento/` para evoluir na composição de etapas com LCEL e `4-agentes-e-tools/` para orquestrar ferramentas com agentes.
+Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção, `3-chains-e-processamento/` para evoluir na composição de etapas com LCEL, `4-agentes-e-tools/` para orquestrar ferramentas com agentes e `5-gerenciamento-e-momeorias/` para adicionar contexto conversacional com histórico por sessão.

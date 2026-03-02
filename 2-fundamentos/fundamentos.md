@@ -113,19 +113,3 @@ cp .env.example .env
 # 4) executar um exemplo
 python 2-fundamentos/1-hello-world.py
 ```
-
-## Erros comuns e diagnóstico rápido
-
-- **Erro de autenticação**: verifique se a chave API correta está no `.env`.
-- **Modelo não encontrado**: confirme nome do modelo e provedor.
-- **ImportError**: garanta que as dependências de `requirements.txt` foram instaladas.
-- **Resposta vazia ou inesperada**: revise prompt, temperatura e variáveis do template.
-
-## Próximos passos sugeridos
-
-Depois desses fundamentos, você pode evoluir para:
-
-- encadeamento com LCEL (`prompt | model | parser`);
-- saída estruturada com schemas;
-- uso de tools e agentes;
-- RAG com recuperação de contexto externo.

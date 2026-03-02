@@ -93,21 +93,3 @@ cp .env.example .env
 python 4-agentes-e-tools/1-agente-react-e-tools.py
 python 4-agentes-e-tools/2-agente-react-usando-prompt-hub.py
 ```
-
-## Erros comuns e diagnóstico rápido
-
-- **ImportError do `tool`**: confirme `from langchain.tools import tool`.
-- **Erro de autenticação**: valide chaves no `.env` e permissões da API.
-- **Loop ou resposta incompleta**: ajuste `max_iterations` no `AgentExecutor`.
-- **Parsing error no ReAct**: revise o formato do prompt (`Action`, `Action Input`, `Final Answer`).
-- **Risco com `eval` na tool de cálculo**: evite entrada não confiável ou substitua por parser matemático seguro.
-- **Falha ao carregar do Hub**: confirme conectividade e se o identificador (ex.: `hwchase17/react`) está correto.
-
-## Próximos passos sugeridos
-
-Depois desta seção, você pode evoluir para:
-
-- tools com schemas de entrada estruturada;
-- agentes com memória e contexto persistente;
-- integração com busca real, banco e APIs externas;
-- estratégias de fallback e validação de saída do agente.

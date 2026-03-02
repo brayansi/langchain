@@ -199,20 +199,3 @@ python 3-chains-e-processamento/5-sumarizacao.py
 python 3-chains-e-processamento/6-sumarizacao-com-map-reduce.py
 python 3-chains-e-processamento/7-pipeline-de-sumarizacao.py
 ```
-
-## Erros comuns e diagnóstico rápido
-
-- **KeyError em templates/chains**: confirme se as chaves retornadas por uma etapa existem na etapa seguinte.
-- **Erro de autenticação**: valide chaves no `.env` e permissão do provedor.
-- **Tipo inesperado**: revise o retorno de funções `@chain` e `RunnableLambda`.
-- **ImportError**: instale dependências com `pip install -r requirements.txt`.
-- **Erro com `stuff`/`load_summarize_chain`**: valide o formato de entrada (`input_documents`) e compare com a abordagem LCEL do `7-pipeline-de-sumarizacao.py`.
-
-## Próximos passos sugeridos
-
-Depois desta seção, você pode evoluir para:
-
-- parsers de saída estruturada;
-- chains com branching e fallback;
-- tools e agentes com fluxo mais complexo;
-- RAG combinando retrieval + processamento + resposta final.
