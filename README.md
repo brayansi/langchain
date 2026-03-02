@@ -29,9 +29,10 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
     - [`1-agente-react-e-tools.py`](4-agentes-e-tools/1-agente-react-e-tools.py)
     - [`2-agente-react-usando-prompt-hub.py`](4-agentes-e-tools/2-agente-react-usando-prompt-hub.py)
 - **`5-gerenciamento-e-momeorias/`** — Exemplos e documentação:
-  - [Gerenciamento e Memorias](5-gerenciamento-e-momeorias/gerenciamento-e-momeorias.md) — uso de `RunnableWithMessageHistory`, `MessagesPlaceholder` e `InMemoryChatMessageHistory` para manter contexto por `session_id`.
+  - [Gerenciamento e Memorias](5-gerenciamento-e-momeorias/gerenciamento-e-momeorias.md) — uso de `RunnableWithMessageHistory`, `MessagesPlaceholder` e `InMemoryChatMessageHistory` para manter contexto por `session_id`; histórico com janela deslizante via `trim_messages`.
   - Exemplos `.py` da seção:
     - [`1-armazenamoento-de-historico.py`](5-gerenciamento-e-momeorias/1-armazenamoento-de-historico.py)
+    - [`2-historico-sliding-window.py`](5-gerenciamento-e-momeorias/2-historico-sliding-window.py)
 
 ## Pré-requisitos
 

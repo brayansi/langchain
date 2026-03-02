@@ -6,6 +6,9 @@ O objetivo é mostrar como manter contexto por sessão usando memória em runtim
 Arquivos cobertos nesta seção:
 
 - `1-armazenamoento-de-historico.py`
+- `2-historico-sliding-window.py`
+
+---
 
 ## 1) Armazenamento de histórico com `RunnableWithMessageHistory`
 
@@ -18,25 +21,37 @@ Nesse exemplo, você:
 3. Cria um prompt de chat com `MessagesPlaceholder(variable_name="history")`.
 4. Define um armazenamento por sessão com `InMemoryChatMessageHistory`.
 5. Encapsula a chain em `RunnableWithMessageHistory` para persistir o histórico da conversa.
-6. Executa múltiplas pErros comuns e diagnóstico rápido
-Erro de autenticação: valide as chaves de API no .env.
-Histórico não sendo lembrado: confira se a mesma session_id está sendo reaproveitada nas chamadas.
-Chaves de entrada inconsistentes: valide input_messages_key="input" e history_messages_key="history" no RunnableWithMessageHistory.
-ImportError: confirme instalação das dependências com pip install -r requirements.txt.
-Memória perdida entre execuções: comportamento esperado de InMemoryChatMessageHistory (não persiste após encerrar o processo).
-Próximos passos sugeridos
-Depois desta seção, você pode evoluir para:
+6. Executa múltiplas mensagens reutilizando a mesma `session_id` para manter contexto.
 
-memória persistida em banco ou cache externo;
-estratégia de resumo de histórico para reduzir tokens;
-múltiplas sessões concorrentes por usuário;
-combinação de memória conversacional com RAG.
+**Casos de uso:**
 
 - Em protótipos de chat com memória de curto prazo.
 - Para validar comportamento contextual antes de usar persistência em banco.
 - Em estudos sobre fluxo conversacional no padrão moderno de runnables.
 
-## Como executar o exemplo
+---
+
+## 2) Histórico com janela deslizante (sliding window)
+
+Arquivo: `5-gerenciamento-e-momeorias/2-historico-sliding-window.py`
+
+Este exemplo estende o anterior adicionando **truncamento de histórico** com `trim_messages`, reduzindo o número de tokens enviados ao modelo e evitando estouro de contexto.
+
+Conceitos utilizados:
+
+1. **`trim_messages`** — Função que corta o histórico mantendo apenas as mensagens mais recentes dentro de um limite de tokens.
+2. **`RunnableLambda`** — Bloco que prepara os inputs antes da chain, aplicando a estratégia de sliding window em `raw_history`.
+3. **`history_messages_key="raw_history"`** — O `RunnableWithMessageHistory` injeta o histórico completo em `raw_history`; o `prepare_inputs` corta e repassa em `history`.
+4. **Estratégia `"last"`** — Mantém as últimas mensagens; `start_on="human"` garante início em mensagem do usuário; `include_system=True` preserva o system prompt.
+
+**Quando usar:**
+
+- Conversas longas em que o histórico completo excederia o limite de tokens.
+- Para reduzir custo e latência em chats iterativos.
+
+---
+
+## Como executar os exemplos
 
 No diretório raiz do projeto:
 
@@ -51,6 +66,7 @@ pip install -r requirements.txt
 cp .env.example .env
 # preencher OPENAI_API_KEY e/ou GOOGLE_API_KEY
 
-# 4) executar exemplo
+# 4) executar exemplos
 python 5-gerenciamento-e-momeorias/1-armazenamoento-de-historico.py
+python 5-gerenciamento-e-momeorias/2-historico-sliding-window.py
 ```
