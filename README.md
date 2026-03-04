@@ -33,6 +33,13 @@ Repositório de estudo e referência sobre LangChain, com documentação e exemp
   - Exemplos `.py` da seção:
     - [`1-armazenamoento-de-historico.py`](5-gerenciamento-e-momeorias/1-armazenamoento-de-historico.py)
     - [`2-historico-sliding-window.py`](5-gerenciamento-e-momeorias/2-historico-sliding-window.py)
+- **`6-loading-e-banco-de-dados-vetoriais/`** — Exemplos e documentação:
+  - [Loading e Banco de Dados Vetoriais](6-loading-e-banco-de-dados-vetoriais/loading-e-banco-de-dados-vetoriais.md) — carregamento de documentos (WebBaseLoader, PyPDFLoader), segmentação com RecursiveCharacterTextSplitter, ingestão em PGVector e busca vetorial por similaridade.
+  - Exemplos `.py` da seção:
+    - [`1-carregamento-com-webBaseLoader.py`](6-loading-e-banco-de-dados-vetoriais/1-carregamento-com-webBaseLoader.py)
+    - [`2-carregamento-de-pdf.py`](6-loading-e-banco-de-dados-vetoriais/2-carregamento-de-pdf.py)
+    - [`3-ingestion-pgvector.py`](6-loading-e-banco-de-dados-vetoriais/3-ingestion-pgvector.py)
+    - [`4-search-vector.py`](6-loading-e-banco-de-dados-vetoriais/4-search-vector.py)
 
 ## Pré-requisitos
 
@@ -51,6 +58,7 @@ Depois, preencha as chaves no `.env`:
 
 - `OPENAI_API_KEY`
 - `GOOGLE_API_KEY`
+- `PGVECTOR_URL` e `PGVECTOR_COLLECTION` (para exemplos com banco vetorial, seção 6)
 
 ## Exemplo rápido
 
@@ -60,18 +68,30 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Instalar pacotes principais para estudos com LLMs
-pip install langchain langchain-openai langchain-google-genai langchain-text-splitters python-dotenv beautifulsoup4 pypdf
+pip install -r requirements.txt
 ```
 
-### O que é cada pacote?
+Ou, para instalação manual dos principais pacotes:
 
-- **`langchain`**: biblioteca base para construir cadeias, agentes e fluxos com LLMs.
-- **`langchain-openai`**: integrações do LangChain com modelos e APIs da OpenAI.
-- **`langchain-google-genai`**: integrações do LangChain com modelos Gemini (Google GenAI).
-- **`langchain-text-splitters`**: utilitários de segmentação de texto para pipelines de processamento e sumarização.
-- **`python-dotenv`**: carrega variáveis de ambiente de um arquivo `.env` (ex.: chaves de API).
-- **`beautifulsoup4`**: parser de HTML/XML para extração e limpeza de conteúdo web.
-- **`pypdf`**: leitura e extração de texto de arquivos PDF.
+```bash
+pip install langchain langchain-core langchain-community langchain-openai langchain-google-genai langchain-text-splitters python-dotenv beautifulsoup4 pypdf
+```
+
+### Principais pacotes utilizados
+
+| Pacote | Descrição |
+|--------|-----------|
+| **`langchain`** | Biblioteca base para construir cadeias, agentes e fluxos com LLMs. |
+| **`langchain-core`** | Componentes essenciais: `PromptTemplate`, `ChatPromptTemplate`, `RunnableLambda`, `StrOutputParser`, `trim_messages`, etc. |
+| **`langchain-community`** | Integrações com fontes externas: `WebBaseLoader`, loaders de documentos e ferramentas de terceiros. |
+| **`langchain-openai`** | Integrações com modelos e APIs da OpenAI (GPT). |
+| **`langchain-google-genai`** | Integrações com modelos Gemini (Google GenAI). |
+| **`langchain-text-splitters`** | Segmentação de texto para pipelines de processamento e sumarização (ex.: `RecursiveCharacterTextSplitter`). |
+| **`python-dotenv`** | Carrega variáveis de ambiente de um arquivo `.env` (chaves de API). |
+| **`beautifulsoup4`** | Parser de HTML/XML para extração e limpeza de conteúdo web. |
+| **`pypdf`** | Leitura e extração de texto de arquivos PDF. |
+| **`langchain-postgres`** | Integração com PostgreSQL e pgvector para armazenamento e busca vetorial. |
+| **`pgvector`** | Extensão de vetores para PostgreSQL. |
 
 ### Salvar dependências do ambiente
 
@@ -87,4 +107,4 @@ Esse comando lista os pacotes instalados no ambiente virtual atual e salva no ar
 pip install -r requirements.txt
 ```
 
-Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção, `3-chains-e-processamento/` para evoluir na composição de etapas com LCEL, `4-agentes-e-tools/` para orquestrar ferramentas com agentes e `5-gerenciamento-e-momeorias/` para adicionar contexto conversacional com histórico por sessão.
+Use a seção `1-introducao/` como ponto de partida conceitual, `2-fundamentos/` para praticar os primeiros blocos de construção, `3-chains-e-processamento/` para evoluir na composição de etapas com LCEL, `4-agentes-e-tools/` para orquestrar ferramentas com agentes, `5-gerenciamento-e-momeorias/` para adicionar contexto conversacional com histórico por sessão e `6-loading-e-banco-de-dados-vetoriais/` para carregamento de documentos e busca vetorial com PGVector.
